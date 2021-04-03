@@ -26,11 +26,11 @@ public class Buttons : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Quit"))
+        /*if (Input.GetButtonDown("Quit"))
         {
             score.SaveQuit();
             Application.Quit();
-        }
+        }*/
         if (Quited == true)
         {
             Quited = false;

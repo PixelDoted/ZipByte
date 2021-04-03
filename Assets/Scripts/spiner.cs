@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class spiner : MonoBehaviour
 {
+
+    public float RotateSpeed = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +16,6 @@ public class spiner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0,0,1);
+        transform.Rotate(0,0,RotateSpeed*Time.fixedDeltaTime);
     }
 }

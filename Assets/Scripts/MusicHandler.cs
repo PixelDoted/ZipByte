@@ -25,8 +25,6 @@ public class MusicHandler : MonoBehaviour
     public void downloadMusic()
     {
         StartCoroutine(getAudioClip());
-        source.clip = clip;
-        Play();
     }
 
     public void Play()
@@ -56,12 +54,13 @@ public class MusicHandler : MonoBehaviour
         {
             yield return www.SendWebRequest();
 
-            if (www.isHttpError || www.isNetworkError)
+            if (www.result != UnityWebRequest.Result.Success && www.result != UnityWebRequest.Result.InProgress)
             {
                 Debug.Log(www.error);
                 yield break;
             } else {
-                clip = DownloadHandlerAudioClip.GetContent(www);
+                source.clip = DownloadHandlerAudioClip.GetContent(www);
+                Play();
             }
         }
     }
