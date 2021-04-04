@@ -17,7 +17,7 @@ namespace InputControls
     ""name"": ""Controls"",
     ""maps"": [
         {
-            ""name"": ""Input"",
+            ""name"": ""MouseInput"",
             ""id"": ""850e2aca-fefb-43b3-8646-3308fb410db3"",
             ""actions"": [
                 {
@@ -59,45 +59,12 @@ namespace InputControls
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e3408e9a-5e48-44fa-b7c1-fd91e002457b"",
-                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""tap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""42f70447-d456-4842-9286-9d5d72886874"",
-                    ""path"": ""<Touchscreen>/position/x"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""tapPosX"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""d2a5609b-7f63-41e8-9afd-50938390ee2e"",
                     ""path"": ""<Mouse>/position/x"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""tapPosX"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b3262110-6168-4b08-92e9-68f59080965e"",
-                    ""path"": ""<Touchscreen>/position/y"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""tapPosY"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -113,15 +80,85 @@ namespace InputControls
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""TouchInput"",
+            ""id"": ""03c93844-e87e-4e1c-a243-6391341d397d"",
+            ""actions"": [
+                {
+                    ""name"": ""tap"",
+                    ""type"": ""Button"",
+                    ""id"": ""2b4710ff-7f4e-4b18-99bc-d25a1c81bfdc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""tapPosX"",
+                    ""type"": ""Value"",
+                    ""id"": ""1208ffa6-cf8c-4f4d-9cf3-6b3f0d7fe4c8"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""tapPosY"",
+                    ""type"": ""Value"",
+                    ""id"": ""8b86c8d4-5aab-422d-96c3-5f3176591c1f"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""77036d4d-85c1-4008-a5af-75df31b6b216"",
+                    ""path"": ""<Touchscreen>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""tap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""78279bd8-2be3-4718-9a63-0bb3f821674f"",
+                    ""path"": ""<Touchscreen>/position/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""tapPosX"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d4054118-f7e8-4654-9bd7-4441888056f3"",
+                    ""path"": ""<Touchscreen>/position/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""tapPosY"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
 }");
-            // Input
-            m_Input = asset.FindActionMap("Input", throwIfNotFound: true);
-            m_Input_tap = m_Input.FindAction("tap", throwIfNotFound: true);
-            m_Input_tapPosX = m_Input.FindAction("tapPosX", throwIfNotFound: true);
-            m_Input_tapPosY = m_Input.FindAction("tapPosY", throwIfNotFound: true);
+            // MouseInput
+            m_MouseInput = asset.FindActionMap("MouseInput", throwIfNotFound: true);
+            m_MouseInput_tap = m_MouseInput.FindAction("tap", throwIfNotFound: true);
+            m_MouseInput_tapPosX = m_MouseInput.FindAction("tapPosX", throwIfNotFound: true);
+            m_MouseInput_tapPosY = m_MouseInput.FindAction("tapPosY", throwIfNotFound: true);
+            // TouchInput
+            m_TouchInput = asset.FindActionMap("TouchInput", throwIfNotFound: true);
+            m_TouchInput_tap = m_TouchInput.FindAction("tap", throwIfNotFound: true);
+            m_TouchInput_tapPosX = m_TouchInput.FindAction("tapPosX", throwIfNotFound: true);
+            m_TouchInput_tapPosY = m_TouchInput.FindAction("tapPosY", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -168,39 +205,39 @@ namespace InputControls
             asset.Disable();
         }
 
-        // Input
-        private readonly InputActionMap m_Input;
-        private IInputActions m_InputActionsCallbackInterface;
-        private readonly InputAction m_Input_tap;
-        private readonly InputAction m_Input_tapPosX;
-        private readonly InputAction m_Input_tapPosY;
-        public struct InputActions
+        // MouseInput
+        private readonly InputActionMap m_MouseInput;
+        private IMouseInputActions m_MouseInputActionsCallbackInterface;
+        private readonly InputAction m_MouseInput_tap;
+        private readonly InputAction m_MouseInput_tapPosX;
+        private readonly InputAction m_MouseInput_tapPosY;
+        public struct MouseInputActions
         {
             private @Controls m_Wrapper;
-            public InputActions(@Controls wrapper) { m_Wrapper = wrapper; }
-            public InputAction @tap => m_Wrapper.m_Input_tap;
-            public InputAction @tapPosX => m_Wrapper.m_Input_tapPosX;
-            public InputAction @tapPosY => m_Wrapper.m_Input_tapPosY;
-            public InputActionMap Get() { return m_Wrapper.m_Input; }
+            public MouseInputActions(@Controls wrapper) { m_Wrapper = wrapper; }
+            public InputAction @tap => m_Wrapper.m_MouseInput_tap;
+            public InputAction @tapPosX => m_Wrapper.m_MouseInput_tapPosX;
+            public InputAction @tapPosY => m_Wrapper.m_MouseInput_tapPosY;
+            public InputActionMap Get() { return m_Wrapper.m_MouseInput; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
             public bool enabled => Get().enabled;
-            public static implicit operator InputActionMap(InputActions set) { return set.Get(); }
-            public void SetCallbacks(IInputActions instance)
+            public static implicit operator InputActionMap(MouseInputActions set) { return set.Get(); }
+            public void SetCallbacks(IMouseInputActions instance)
             {
-                if (m_Wrapper.m_InputActionsCallbackInterface != null)
+                if (m_Wrapper.m_MouseInputActionsCallbackInterface != null)
                 {
-                    @tap.started -= m_Wrapper.m_InputActionsCallbackInterface.OnTap;
-                    @tap.performed -= m_Wrapper.m_InputActionsCallbackInterface.OnTap;
-                    @tap.canceled -= m_Wrapper.m_InputActionsCallbackInterface.OnTap;
-                    @tapPosX.started -= m_Wrapper.m_InputActionsCallbackInterface.OnTapPosX;
-                    @tapPosX.performed -= m_Wrapper.m_InputActionsCallbackInterface.OnTapPosX;
-                    @tapPosX.canceled -= m_Wrapper.m_InputActionsCallbackInterface.OnTapPosX;
-                    @tapPosY.started -= m_Wrapper.m_InputActionsCallbackInterface.OnTapPosY;
-                    @tapPosY.performed -= m_Wrapper.m_InputActionsCallbackInterface.OnTapPosY;
-                    @tapPosY.canceled -= m_Wrapper.m_InputActionsCallbackInterface.OnTapPosY;
+                    @tap.started -= m_Wrapper.m_MouseInputActionsCallbackInterface.OnTap;
+                    @tap.performed -= m_Wrapper.m_MouseInputActionsCallbackInterface.OnTap;
+                    @tap.canceled -= m_Wrapper.m_MouseInputActionsCallbackInterface.OnTap;
+                    @tapPosX.started -= m_Wrapper.m_MouseInputActionsCallbackInterface.OnTapPosX;
+                    @tapPosX.performed -= m_Wrapper.m_MouseInputActionsCallbackInterface.OnTapPosX;
+                    @tapPosX.canceled -= m_Wrapper.m_MouseInputActionsCallbackInterface.OnTapPosX;
+                    @tapPosY.started -= m_Wrapper.m_MouseInputActionsCallbackInterface.OnTapPosY;
+                    @tapPosY.performed -= m_Wrapper.m_MouseInputActionsCallbackInterface.OnTapPosY;
+                    @tapPosY.canceled -= m_Wrapper.m_MouseInputActionsCallbackInterface.OnTapPosY;
                 }
-                m_Wrapper.m_InputActionsCallbackInterface = instance;
+                m_Wrapper.m_MouseInputActionsCallbackInterface = instance;
                 if (instance != null)
                 {
                     @tap.started += instance.OnTap;
@@ -215,8 +252,63 @@ namespace InputControls
                 }
             }
         }
-        public InputActions @Input => new InputActions(this);
-        public interface IInputActions
+        public MouseInputActions @MouseInput => new MouseInputActions(this);
+
+        // TouchInput
+        private readonly InputActionMap m_TouchInput;
+        private ITouchInputActions m_TouchInputActionsCallbackInterface;
+        private readonly InputAction m_TouchInput_tap;
+        private readonly InputAction m_TouchInput_tapPosX;
+        private readonly InputAction m_TouchInput_tapPosY;
+        public struct TouchInputActions
+        {
+            private @Controls m_Wrapper;
+            public TouchInputActions(@Controls wrapper) { m_Wrapper = wrapper; }
+            public InputAction @tap => m_Wrapper.m_TouchInput_tap;
+            public InputAction @tapPosX => m_Wrapper.m_TouchInput_tapPosX;
+            public InputAction @tapPosY => m_Wrapper.m_TouchInput_tapPosY;
+            public InputActionMap Get() { return m_Wrapper.m_TouchInput; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(TouchInputActions set) { return set.Get(); }
+            public void SetCallbacks(ITouchInputActions instance)
+            {
+                if (m_Wrapper.m_TouchInputActionsCallbackInterface != null)
+                {
+                    @tap.started -= m_Wrapper.m_TouchInputActionsCallbackInterface.OnTap;
+                    @tap.performed -= m_Wrapper.m_TouchInputActionsCallbackInterface.OnTap;
+                    @tap.canceled -= m_Wrapper.m_TouchInputActionsCallbackInterface.OnTap;
+                    @tapPosX.started -= m_Wrapper.m_TouchInputActionsCallbackInterface.OnTapPosX;
+                    @tapPosX.performed -= m_Wrapper.m_TouchInputActionsCallbackInterface.OnTapPosX;
+                    @tapPosX.canceled -= m_Wrapper.m_TouchInputActionsCallbackInterface.OnTapPosX;
+                    @tapPosY.started -= m_Wrapper.m_TouchInputActionsCallbackInterface.OnTapPosY;
+                    @tapPosY.performed -= m_Wrapper.m_TouchInputActionsCallbackInterface.OnTapPosY;
+                    @tapPosY.canceled -= m_Wrapper.m_TouchInputActionsCallbackInterface.OnTapPosY;
+                }
+                m_Wrapper.m_TouchInputActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @tap.started += instance.OnTap;
+                    @tap.performed += instance.OnTap;
+                    @tap.canceled += instance.OnTap;
+                    @tapPosX.started += instance.OnTapPosX;
+                    @tapPosX.performed += instance.OnTapPosX;
+                    @tapPosX.canceled += instance.OnTapPosX;
+                    @tapPosY.started += instance.OnTapPosY;
+                    @tapPosY.performed += instance.OnTapPosY;
+                    @tapPosY.canceled += instance.OnTapPosY;
+                }
+            }
+        }
+        public TouchInputActions @TouchInput => new TouchInputActions(this);
+        public interface IMouseInputActions
+        {
+            void OnTap(InputAction.CallbackContext context);
+            void OnTapPosX(InputAction.CallbackContext context);
+            void OnTapPosY(InputAction.CallbackContext context);
+        }
+        public interface ITouchInputActions
         {
             void OnTap(InputAction.CallbackContext context);
             void OnTapPosX(InputAction.CallbackContext context);

@@ -25,11 +25,13 @@ public class ScriptCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (controls.Input.tap.ReadValue<float>() > 0 && Debounce == false)
+        if ((controls.MouseInput.tap.ReadValue<float>() > 0 || controls.TouchInput.tap.ReadValue<float>() > 0) && Debounce == false)
         {
             Debounce = true;
-            Vector2 tapPosition = new Vector2(controls.Input.tapPosX.ReadValue<float>(), controls.Input.tapPosY.ReadValue<float>());
+            Vector2 tapPosition = new Vector2(controls.MouseInput.tapPosX.ReadValue<float>(), controls.MouseInput.tapPosY.ReadValue<float>());
+            if (controls.TouchInput.tap.ReadValue<float>() > 0) 
+                tapPosition = new Vector2(controls.TouchInput.tapPosX.ReadValue<float>(), controls.TouchInput.tapPosY.ReadValue<float>());
+
             Vector2 finalPos = Camera.main.ScreenToWorldPoint(tapPosition);
 
             Camera.main.GetComponent<ScriptCamera>().Pause = true;
@@ -43,7 +45,7 @@ public class ScriptCamera : MonoBehaviour
                 }
             }
             Camera.main.GetComponent<ScriptCamera>().Pause = false;
-        } else if (controls.Input.tap.ReadValue<float>() == 0) {
+        } else if (controls.MouseInput.tap.ReadValue<float>() == 0 && controls.TouchInput.tap.ReadValue<float>() == 0) {
             Debounce = false;
         }
         
@@ -51,7 +53,7 @@ public class ScriptCamera : MonoBehaviour
 
         if (spawn.Paused == false && Pause == false)
         {
-            transform.Rotate(0, 0, RotateSpeed*Time.fixedDeltaTime);
+            transform.Rotate(0, 0, RotateSpeed*Time.deltaTime);
         }else if (Pause == true)
         {
             Pause = true;

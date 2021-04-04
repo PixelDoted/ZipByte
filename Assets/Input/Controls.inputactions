@@ -2,7 +2,7 @@
     "name": "Controls",
     "maps": [
         {
-            "name": "Input",
+            "name": "MouseInput",
             "id": "850e2aca-fefb-43b3-8646-3308fb410db3",
             "actions": [
                 {
@@ -44,28 +44,6 @@
                 },
                 {
                     "name": "",
-                    "id": "e3408e9a-5e48-44fa-b7c1-fd91e002457b",
-                    "path": "<Touchscreen>/primaryTouch/tap",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "tap",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "42f70447-d456-4842-9286-9d5d72886874",
-                    "path": "<Touchscreen>/position/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "tapPosX",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "d2a5609b-7f63-41e8-9afd-50938390ee2e",
                     "path": "<Mouse>/position/x",
                     "interactions": "",
@@ -77,19 +55,73 @@
                 },
                 {
                     "name": "",
-                    "id": "b3262110-6168-4b08-92e9-68f59080965e",
-                    "path": "<Touchscreen>/position/y",
+                    "id": "f13ae37f-4579-472e-a61c-596198810275",
+                    "path": "<Mouse>/position/y",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "tapPosY",
                     "isComposite": false,
                     "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "TouchInput",
+            "id": "03c93844-e87e-4e1c-a243-6391341d397d",
+            "actions": [
+                {
+                    "name": "tap",
+                    "type": "Button",
+                    "id": "2b4710ff-7f4e-4b18-99bc-d25a1c81bfdc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "tapPosX",
+                    "type": "Value",
+                    "id": "1208ffa6-cf8c-4f4d-9cf3-6b3f0d7fe4c8",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "tapPosY",
+                    "type": "Value",
+                    "id": "8b86c8d4-5aab-422d-96c3-5f3176591c1f",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "77036d4d-85c1-4008-a5af-75df31b6b216",
+                    "path": "<Touchscreen>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "tap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "f13ae37f-4579-472e-a61c-596198810275",
-                    "path": "<Mouse>/position/y",
+                    "id": "78279bd8-2be3-4718-9a63-0bb3f821674f",
+                    "path": "<Touchscreen>/position/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "tapPosX",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d4054118-f7e8-4654-9bd7-4441888056f3",
+                    "path": "<Touchscreen>/position/y",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
